@@ -1,1 +1,24 @@
-...
+{% extends "layout.html" %}
+{% block title %}New Job{% endblock %}
+{% block content %}
+<h2>Create New Job</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label>Customer</label>
+    <select name="customer_id" class="form-select">
+      {% for customer in customers %}
+      <option value="{{ customer.id }}">{{ customer.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="mb-3">
+    <label>Description</label>
+    <input class="form-control" name="description" required>
+  </div>
+  <div class="mb-3">
+    <label>Due Date</label>
+    <input class="form-control" name="due_date" type="date">
+  </div>
+  <button class="btn btn-success">Create Job</button>
+</form>
+{% endblock %}

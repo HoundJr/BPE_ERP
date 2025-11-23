@@ -1,1 +1,29 @@
-...
+{% extends "layout.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Job Dashboard</h1>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Customer ID</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for job in jobs %}
+    <tr>
+      <td>{{ job.id }}</td>
+      <td>{{ job.customer_id }}</td>
+      <td>{{ job.description }}</td>
+      <td>{{ job.status }}</td>
+      <td>{{ job.due_date }}</td>
+      <td><a class="btn btn-sm btn-primary" href="{{ url_for('new_quote', job_id=job.id) }}">Quote</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,1 +1,26 @@
-...
+{% extends "layout.html" %}
+{% block title %}New Quote{% endblock %}
+{% block content %}
+<h2>Generate Quote for Job #{{ job.id }}</h2>
+<p><strong>Customer:</strong> {{ customer.name }}</p>
+<p><strong>Description:</strong> {{ job.description }}</p>
+<form method="POST">
+  <div class="mb-3">
+    <label>Hourly Rate ($)</label>
+    <input class="form-control" name="hourly_rate" type="number" step="0.01" required>
+  </div>
+  <div class="mb-3">
+    <label>Estimated Hours</label>
+    <input class="form-control" name="estimated_hours" type="number" step="0.1" required>
+  </div>
+  <div class="mb-3">
+    <label>Material Cost ($)</label>
+    <input class="form-control" name="material_cost" type="number" step="0.01" required>
+  </div>
+  <div class="mb-3">
+    <label>Markup (%)</label>
+    <input class="form-control" name="markup" type="number" step="0.1" required>
+  </div>
+  <button class="btn btn-primary">Generate Quote</button>
+</form>
+{% endblock %}
